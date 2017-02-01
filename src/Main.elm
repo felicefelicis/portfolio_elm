@@ -19,19 +19,19 @@ type alias Msg = Never
 
 
 
---VIEW
-
-view : Model -> Html Msg
-view model =
-    div [] [ text "WASSUP BITCHES" ] 
-
-
-
 -- UPDATE
 
 update : Msg -> Model -> Model
 update msg model =
     model
+
+
+
+--VIEW
+
+view : Model -> Html Msg
+view model =
+    div [] [ text "WASSUP BITCHES" ] 
 
 
 
