@@ -13,6 +13,8 @@ type alias Model = List Int
 model : Model
 model = []
 
+init : (Model, Cmd Msg)
+init = (model, Cmd.none)
 
 
 -- MESSAGES
@@ -23,9 +25,9 @@ type alias Msg = Never
 
 -- UPDATE
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-    model
+    (model, Cmd.none)
 
 
 
@@ -75,8 +77,9 @@ view model =
 -- MAIN
 
 main =
-    beginnerProgram
-        { model = model
+    program
+        { init = init
         , view = view
         , update = update
+        , subscriptions = \model -> Sub.none
         }

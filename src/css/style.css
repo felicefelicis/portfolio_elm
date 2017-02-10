@@ -52,7 +52,6 @@ li a {
 #entete{
 	width: 100vw;
 	height: 90vh;
-	background-image: url(../images/bg1.jpg);
 	background-size: cover;
     background-position: top-left;
     -webkit-filter: grayscale(100%);
