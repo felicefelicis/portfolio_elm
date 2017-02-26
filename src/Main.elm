@@ -22,22 +22,35 @@ Suit le modèle établit par
 
 -}
 
-
+import Array exposing ( Array )
 
 import Html exposing ( .. )
 
 import Html.Attributes exposing ( .. )
+
+import Html.Events exposing ( .. )
 
 import Random.Pcg as Random
 
 
 
 -- MODEL
+type alias Url = String
+
+type alias PortfolioItem =
+    { thumbnail : Url
+    , zoom : Maybe Url
+    , link : Maybe Url
+    , descriptionProjet : String
+    , over : Bool
+    }
+
 {-| Le modèle de notre application.
 Contient tout les états modifiables de notre programme.
 -}
 type alias Model =
     { backgroundImage : Int
+    , portfolioItems : Array PortfolioItem
     }
 
 
@@ -48,6 +61,17 @@ puisque sa valeur sera automatiquement remplacée par une valeur aléatoire.
 model : Model
 model =
     { backgroundImage = 1
+    , portfolioItems = Array.fromList
+        [ PortfolioItem "images/portfolio/final_pad.gif" Nothing Nothing "Paddy Mimbulus Mimbletonia" False
+        , PortfolioItem "images/portfolio/Lockhart_hogwarts_v1.gif" Nothing Nothing "" False 
+        , PortfolioItem "images/portfolio/PA_elixir1.jpg" Nothing Nothing "" False
+        , PortfolioItem "images/portfolio/equipe_elixir1.jpg" Nothing Nothing "" False
+        , PortfolioItem "images/portfolio/zoomcours_elixir1.jpg" Nothing Nothing "" False
+        , PortfolioItem "images/portfolio/theEndBegins1.gif" Nothing Nothing "" False
+        , PortfolioItem "images/portfolio/enattendant4_Elias1.png" Nothing Nothing "" False
+        , PortfolioItem "images/portfolio/abistiel9.png" Nothing Nothing "" False
+        , PortfolioItem "images/portfolio/NEW_BANN_MM_ENCOURS5.gif" Nothing Nothing "" False
+        ] 
     }
 
 
@@ -69,22 +93,51 @@ init = (model, Random.generate SetBgImage backgroundGenerator)
 
       * `SetBgImage n`: Change la valeur de `backgroundImage`
 -}
-type Msg = SetBgImage Int
+type Msg
+    = SetBgImage Int
+    | OverItem Int
+    | OutItem Int
 
 
 
 -- UPDATE
+
+updatePortfolioItemOver : Int -> Bool -> Array PortfolioItem -> Array PortfolioItem
+updatePortfolioItemOver index over portfolioItems = 
+    let
+        mItem = Array.get index model.portfolioItems
+    in
+    case mItem of
+        Just item -> Array.set index { item | over = over } model.portfolioItems
+        Nothing -> model.portfolioItems
 
 {-| Transforme le modèle en fonction du message reçu. 
 -}
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of
-        SetBgImage n -> ({ backgroundImage = n }, Cmd.none)
-
+        SetBgImage n -> ({ model | backgroundImage = n }, Cmd.none)
+        OverItem index -> ({ model | portfolioItems = updatePortfolioItemOver index True model.portfolioItems }, Cmd.none)
+        OutItem index  -> ({ model | portfolioItems = updatePortfolioItemOver index False model.portfolioItems }, Cmd.none)
 
 
 --VIEW
+viewPortfolioItem : Int -> PortfolioItem -> Html Msg
+viewPortfolioItem index item =
+    div [ onMouseEnter (OverItem index)
+        , onMouseLeave (OutItem index)
+        ]
+        [ div [ hidden (not item.over) ]
+            [ a [ href (Maybe.withDefault "#" item.link) ]
+                [ text "WWW" ]
+            , a [ href (Maybe.withDefault "#" item.zoom) ]
+                [ text "ZOOM" ]
+            , p [ class "descriptionProjet" ]
+                [ text item.descriptionProjet ]
+            ]
+        , img [ src item.thumbnail ]
+            []
+        ] 
 
 {-| Affichage du modèle
 -}
@@ -120,6 +173,8 @@ view model =
             [ text "Parce qu'il faut parfois savoir être showoff" ]
         , h2 [ class "sectionTitre" ]
             [ text "Portfolio" ]
+        , div [ id "conteneurProjet" ]
+            (Array.toList (Array.indexedMap viewPortfolioItem model.portfolioItems))
         ]
     , div [ id "competence" ]
         [ h3 [ class "quote" ]

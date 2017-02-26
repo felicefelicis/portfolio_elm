@@ -87,6 +87,19 @@ li a {
     padding-top: 30px;
 }
 
+#conteneurProjet{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#conteneurProjet>div {
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+}
+
 .quote{
     text-align: center;
 }
