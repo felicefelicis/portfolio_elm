@@ -68,7 +68,6 @@ model =
         , PortfolioItem "images/portfolio/equipe_elixir1.jpg" Nothing Nothing "" False
         , PortfolioItem "images/portfolio/zoomcours_elixir1.jpg" Nothing Nothing "" False
         , PortfolioItem "images/portfolio/theEndBegins1.gif" Nothing Nothing "" False
-        , PortfolioItem "images/portfolio/enattendant4_Elias1.png" Nothing Nothing "" False
         , PortfolioItem "images/portfolio/abistiel9.png" Nothing Nothing "" False
         , PortfolioItem "images/portfolio/NEW_BANN_MM_ENCOURS5.gif" Nothing Nothing "" False
         ] 
@@ -127,10 +126,10 @@ viewPortfolioItem index item =
     div [ onMouseEnter (OverItem index)
         , onMouseLeave (OutItem index)
         ]
-        [ div [ hidden (not item.over) ]
-            [ a [ href (Maybe.withDefault "#" item.link) ]
+        [ div [ class "overItemPortfolio", hidden (not item.over) ]
+            [ a [ class "www", href (Maybe.withDefault "#" item.link) ]
                 [ text "WWW" ]
-            , a [ href (Maybe.withDefault "#" item.zoom) ]
+            , a [ class "zoom", href (Maybe.withDefault "#" item.zoom) ]
                 [ text "ZOOM" ]
             , p [ class "descriptionProjet" ]
                 [ text item.descriptionProjet ]
