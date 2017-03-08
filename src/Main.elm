@@ -77,7 +77,6 @@ model =
 backgroundGenerator : Random.Generator Int
 backgroundGenerator = Random.int 1 3
 
-
 {-| Initialise la programme avec le modèle initial et lance le message SetBgImage
 avec une valeur aléatoire.
 -}
@@ -119,7 +118,6 @@ update msg model =
         OverItem index -> ({ model | portfolioItems = updatePortfolioItemOver index True model.portfolioItems }, Cmd.none)
         OutItem index  -> ({ model | portfolioItems = updatePortfolioItemOver index False model.portfolioItems }, Cmd.none)
 
-
 --VIEW
 viewPortfolioItem : Int -> PortfolioItem -> Html Msg
 viewPortfolioItem index item =
@@ -152,15 +150,15 @@ view model =
     [ nav [ id "navigationPrincipale" ]
         [ ul []
             [ li []
-                [ a [ href "#" ]
+                [ a [ href "#portfolio" ]
                     [ text "PORTFOLIO" ]
                 ]
             , li []
-                [ a [ href "#" ]
+                [ a [ href "#competence" ]
                     [ text "COMPÉTENCES" ]
                 ]
             , li []
-                [ a [ href "#" ]
+                [ a [ href "#joindre" ]
                     [ text "À PROPOS" ]
                 ]
             ]
