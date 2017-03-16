@@ -1,0 +1,208 @@
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-decoration: none;
+}
+h1 {
+  font-size: 70pt;
+  margin: auto;
+  text-shadow: 2px 1px 1px #E36464;
+  text-decoration: none;
+}
+h3 {
+  font-size: 30pt;
+  margin: auto;
+  text-decoration: none;
+}
+h2 {
+  font-size: 65pt;
+  margin: auto;
+  text-decoration: none;
+}
+#navigationPrincipale {
+  position: absolute;
+  margin-right: 0px;
+  width: 100%;
+  z-index: 9999;
+}
+#navigationPrincipale ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+#navigationPrincipale li {
+  float: right;
+  margin-right: 1px;
+  border-bottom: 2px solid #000;
+  margin: 5px;
+}
+#navigationPrincipale li a {
+  display: block;
+  min-width: 140px;
+  /*height: 50px;*/
+  line-height: 50px;
+  text-align: center;
+  /*padding: 14px 16px;*/
+  text-decoration: none!important;
+  color: black;
+}
+#entete {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: top-left;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  clear: both;
+  display: flex;
+  justify-content: space-around;
+  background-image: url(../images/bg1.jpeg)
+}
+.nom {
+  top: 0;
+  width: 100%;
+  height: 20%;
+  z-index: 999;
+  text-align: right;
+  margin-right: 0;
+  margin-top: 10%;
+  position: absolute;
+}
+#portfolio {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 30px;
+  text-decoration: none!important;
+}
+#conteneurProjet {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#conteneurLink{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#conteneurSkills{
+
+}
+
+#conteneurProjet > div {
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+#conteneurProjet img {
+  width: 800px;
+}
+.overItemPortfolio {
+  height: 300px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+}
+.overItemPortfolio li:first-child {
+  margin-top: 100px;
+}
+.overItemPortfolio li {
+  margin-bottom: 25px;
+  height: 50px;
+}
+.zoom,
+.www {
+  border: 2px solid #3d3d3d;
+  border-radius: 3px;
+  padding: 10px;
+  width: 100px;
+  margin: 0 auto;
+  text-decoration: none!important;
+  /*position: relative;
+    text-align: center;*/
+}
+.quote {
+  text-align: center;
+}
+.sectionTitre {
+  text-align: center;
+  text-decoration: none;
+}
+#competence {
+  width: 100vw;
+  height: 90vh;
+  background-color: #f2f2f2;
+  padding-top: 30px;
+  text-decoration: none!important;
+}
+#joindre {
+  width: 100vw;
+  height: 90vh;
+  background-color: #3d3d3d;
+  padding-top: 30px;
+  text-decoration: none!important;
+}
+#joindre h2,
+#joindre h3,
+#joindre p {
+  color: #fff;
+  text-decoration: none;
+}
+
+#joindre p{
+	margin: 0 auto;
+	text-align: center;
+}
+
+i{
+  font-size: 30em;
+  color:#fff;
+  padding: 100px 25px;
+}
+
+/************* TEST SKILLS via codepen: https://codepen.io/triss90/pen/pjPRyW ****************/
+
+.skills {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+
+.skills .columnDuSkill {
+  width: 50%;
+  float: left;
+}
+@media (max-width: 1000px) {
+  .skills .columnDuSkill {
+    width: 100%;
+  }
+}
+.skills .columnDuSkill .nomSkill {
+  font-size: 20px;
+  text-align: center;
+  font-family: Verdana;
+  color: #cccccc;
+}
+.skills .columnDuSkill .skill-icons {
+  text-align: center;
+}
+.skills .columnDuSkill .skill-icons span {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #cccccc;
+  margin: 10px 5px 20px 5px;
+  font-weight: 700;
+}
